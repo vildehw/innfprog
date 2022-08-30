@@ -27,37 +27,38 @@
         // endret variabelen checksum fra const til let
         let checksum = 0
         const multiplier = 3
-        //Ditt navn. PS: Bytt denne til ditt navn. La til en forward slash, slik at det ble en kommentar. 
-        //Selve navnebyttet er ikke en feil som teller mot de 10 feilene du skal finne. 
-        // la til ""
-        const myName = "Vilde"
+        //Ditt navn. PS: Bytt denne til ditt navn.  
+        //Selve navnebyttet er ikke en feil som teller mot de 10 feilene du skal finne.  
+        // Feil nr 1. Kommentar hadde kun en forward slash. La til en forward slash.
+        const myName = "Vilde" 
+        // Feil nr. 2. navn hadde ikke "", la til disse for å markere som string.
 
         //Klargjør variabel for bygging av tekst 
-        // Rettet opp skrivefeil lett
-        let greeting = "";
+        let greeting = ""; 
+        // Feil nr. 3. Skrivefeil. Rettet opp fra lett til let.
         const saluteClass = "pyro";
 
         //Kontroller datatype
         if(typeof myName === "string") { 
-            //rettet opp skrivefeil fra checksumm
-            checksum = startingPoint * multiplier
+            checksum = startingPoint * multiplier 
+            // Feil nr 4. Skrivefeil. Rettet fra checksumm til checksum
         } else {
             checksum = startingPoint
         }
 
         //Kontroller checksum 
-        // tok vekk "!"
-        if(checksum === 765) {
+        if(checksum === 765) { 
+        // Feil nr. 5 tok vekk !
             greeting = "beklager"
         } else {
             greeting = "gratulerer"
             const output = greeeting + ", " + myName + "<br />Du klarte det!"
             const textElement = document.getElementById("TEXT");
             const saluteElement = document.getElementById("salute") 
-            // endret fra D til d 
+            // Feil nummer 6. Det sto getElementByID, rettet til getElementById
             textElement.removeAttribute("class")
             textElement.innerHTML = output 
-            // endret fra saluteclass til saluteClass
+            // Feil nummer syv. Endret fra saluteclass til saluteClass
             saluteElement.setAttribute("class", saluteClass)
             document.body.setAttribute("class","success")
         }
