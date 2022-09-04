@@ -28,40 +28,41 @@
         // Feil nummer syv. Endret variabelen checksum fra const til let 
         const multiplier = 3
         //Ditt navn. PS: Bytt denne til ditt navn.   
-        // Feil nr 1. Kommentar hadde kun en forward slash. La til en forward slash.
+        // Feil nummer en. Kommentar hadde kun en forward slash. La til en forward slash for å markere som en kommentar.
         //Selve navnebyttet er ikke en feil som teller mot de 10 feilene du skal finne.  
         const myName = "Vilde"
-        // Feil nr. 2. navn hadde ikke fnutter, la til disse for å markere navnet som string.
+        // Feil nummer to. navn hadde ikke fnutter, la til disse for å markere navnet som string.
 
         //Klargjør variabel for bygging av tekst 
         let greeting = ""; 
-        // Feil nr. 3. Det sto lett. Endret til let.
+        // Feil nummer tre. Det sto lett. Endret til let.
         const saluteClass = "pyro";
 
         //Kontroller datatype
-        if(typeof myName == "string") { 
+        if(typeof myName === "string") {  
             checksum = startingPoint * multiplier 
-            // Feil nr 4. Det sto checksumm. Endret til checksum
+            // Feil nummer fire. Det sto checksumm. Endret til checksum
         } else {
             checksum = startingPoint
         }
 
         //Kontroller checksum 
         if(checksum !== 765) {  
-        // 
+        // Feil nummer åtte. Sammenligningsoperatoren var ===. Endret denne til !==. 
         
             greeting = "beklager"
         } else {
             greeting = "gratulerer"
             const output = greeting + ", " + myName + "<br />Du klarte det!" 
-            //fjernet en e
-            const textElement = document.getElementById("TEXT");
+            //Feil nummer ti. Det var tre e i greeting. Fjernet den ene. 
+            const textElement = document.getElementById("text"); 
+            //Feil nummer ni. Endret TEXT til text for at den skal samsvare med h1 tag id.
             const saluteElement = document.getElementById("salute") 
             // Feil nummer fem. Det sto getElementByID, endret til getElementById.
             textElement.removeAttribute("class")
             textElement.innerHTML = output 
+            saluteElement.setAttribute("class", saluteClass) 
             // Feil nummer seks. Det sto saluteclass. Endret til saluteClass
-            saluteElement.setAttribute("class", saluteClass)
             document.body.setAttribute("class","success")
         }
 
