@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>betinget logikk cheat cheet</title>
+</head>
+<body>
+   <h2> Er du myndig?</h2> 
+   <p id="myndig-utskrift"></p>  
+   
+   <h2>Har fått tilgang:</h2> 
+   <p id="tilgang utskrift"></p> 
+
+   <h2>Er vi i gang?</h2> 
+   <div id="igang-utskrift"></div>
+
+    <script> 
+        const age = 21 
+        //if test for å sjekke om alderen er 18 år eller over 
+        if(age >= 18) {
+            document.getElementById("myndig-utskrift").innerHTML = "ja" 
+        } else { 
+            document.getElementById("myndig-utskrift").innerHTML = "nei"
+        } 
+
+        //tilgangssjekk: 
+        const userInput = 1234  
+        const te = document.getElementById("tilgang-utskrift")
+
+        if(userInput === 1234) {
+            te.innerHTML = "innvilget"
+        } else if(userInput === 4321) {
+            te.innerHTML = "innvilget"
+        } else if(userInput = 333) { 
+            te.innerHTML = "innvilget"
+        } else { 
+            te.innerHTML = "avvist"
+        } 
+
+        // if(userInput === 1234 || userInput === 4321 userInput === 333) 
+
+        //igang-sjekk 
+        const iGangDiv = document.getElementById("igang-utskrift") 
+        const time = 7 
+        const awake = time > 6 ? true : false  
+
+    iGangDiv.innerHTML = `<p>$(awake ? "du er våken" : "du sover")</p>`
+            
+    
+    </script>
+</body>
+</html>
