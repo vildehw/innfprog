@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 4</title>
+</head>
+<body> 
+    
+    <script>   
+
+        const alphabet = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"]  
+
+        function lookup (a) {
+            const letter = a.toString().toUpperCase()   
+            
+            const letterIndex = alphabet.indexOf(letter) + 1
+            const print = document.createElement("p") 
+            
+            if(letterIndex <= 0){
+                print.innerHTML = "dette er ikke en bokstav i det norske alfabet" 
+                document.body.appendChild(print)
+            } else {
+                  
+                print.innerHTML = letter + " er nummer " + letterIndex  
+                document.body.appendChild(print) 
+            }
+            
+            //console.log(letterIndex)
+        } 
+        lookup("f")
+    </script>
+</body>
+</html>

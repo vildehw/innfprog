@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 2</title>
+</head>
+<body> 
+    <p id="name"></p> 
+    <p id="mail"></p> 
+    <p id="age"></p> 
+
+    <script> 
+    
+        function person(name, birthyear, email) {
+            document.getElementById("name").innerHTML = name  
+            document.getElementById("mail").innerHTML = email
+            document.getElementById("age").innerHTML = 2022 - birthyear
+        } 
+
+        person("Vilde", 2001, "vildehw@hiof.no")
+
+    </script>
+</body>
+</html>

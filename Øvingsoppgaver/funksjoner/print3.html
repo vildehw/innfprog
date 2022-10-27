@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 3</title>
+</head>
+<body> 
+    <p id="name"></p> 
+    <p id="mail"></p> 
+    <p id="age"></p> 
+    <script> 
+
+function person(name = "ikke oppgitt", birthyear = "ikke oppgitt", email = "ikke oppgitt") {
+            document.getElementById("name").innerHTML = name  
+            
+            if(birthyear === "ikke oppgitt") {
+                document.getElementById("age").innerHTML = birthyear
+            } else {
+            const birthyearNumber = Number(birthyear)
+            let age = 2022 - birthyearNumber 
+            document.getElementById("age").innerHTML = age 
+            }  
+
+            document.getElementById("mail").innerHTML = email
+        } 
+
+        person("Vilde", 2001, "vildehw@hiof.no")
+
+    </script>
+</body>
+</html>

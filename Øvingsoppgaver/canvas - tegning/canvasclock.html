@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 3</title>
+</head>
+<body>
+    <canvas id="drawing-area"></canvas>  
+
+    <script>  
+        const canvas = document.getElementById("drawing-area")  
+        const ctx = canvas.getContext("2d") 
+
+        canvas.width = 700 
+        canvas.height = 700 
+        
+        ctx.beginPath()
+        ctx.arc(350, 350, 350, 0, 2 * Math.PI)  
+        ctx.stroke()  
+        ctx.closePath()
+
+        ctx.font = "50px Arial"
+        ctx.fillText("12", 320, 50) 
+        ctx.fillText("6", 320, 670)
+
+
+    </script>
+</body>
+</html>
