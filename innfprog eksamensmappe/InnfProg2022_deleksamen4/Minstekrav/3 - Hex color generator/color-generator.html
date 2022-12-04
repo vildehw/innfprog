@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hexa decimal color generator</title>
+    <link href="hex-gen-style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Hex color generator
+        <br /><small>Click &quot;Generate&quot; to generate a three-color palette:</small></h1>
+        <button id="generate" onclick="generateColors()">Generate</button>    
+    </header>
+    <section id="color-palette">
+        <div id="primary-color" class="color-container">Primary color <span id="primary-color-code" class="code-container">#f3f3f3</span></div>
+        <div id="secondary-color" class="color-container">Secondary color <span id="secondary-color-code" class="code-container">#cccccc</span></div>
+        <div id="third-color" class="color-container">Tertiary color <span id="third-color-code" class="code-container">#eeeeee</span></div>
+    </section>
+
+    <script>
+        /* NOTE:
+         * A hexadecimal color code consists of three number using the hexadecimal number system.
+         * This means a hexa-decimal color code consists of a number between 0 and 255, formatted as hexa (FF to 00)
+         * for the three parameters R (red), G (green) and B (blue), 
+         * giving the format #EA6100 (R: EA, G: 61, B: 00) (<- the green button color from this css)
+         * 
+         * In this program, you need to construct an array of allowed characters, and randomly select
+         * six characters for each color from that array
+         */
+        //Allowed values, from string to array:
+        const hexValuesString = "0123456789ABCDEF"
+        //TODO: Turn string to array:
+        const hexValuesArray = hexValuesString.split("") 
+
+    
+        
+        //Function to activate on "generate"-button
+        function generateColors() {
+            //Set default variables for color-codes:
+            let primary = "#"
+            let secondary = "#"
+            let third = "#" 
+            
+            //TODO: System/code: to construct hexa-code for primary (six allowed characters): 
+                                    
+            function randomMinMax(min, max) { 
+                return Math.floor(Math.random() * (max - min + 1) + min)
+            }   
+            //funksjon for randomisering er hentet fra https://lms.webtricks.blog/kurs/innforing-i-programmering/10-canvas-animasjon/randomisering-tilfeldig-utvalg-verdi 
+
+
+            function randomValue() { 
+                const randomIndex = randomMinMax(0, hexValuesArray.length - 1) 
+                let randomArrayElement = hexValuesArray[randomIndex]  
+                return randomArrayElement
+            }   
+            
+           function randomString () {
+                randomArray = []
+                while(randomArray.length < 6 ){ 
+                //kilde for while-løkke https://lms.webtricks.blog/kurs/innforing-i-programmering/lokker/while-lokker 
+                    randomArray.push(randomValue())
+                }    
+                finalString = randomArray.join("")   
+                //kilde for å gjøre arrat til string https://bobbyhadz.com/blog/javascript-convert-array-to-string-without-commas 
+                return finalString
+            } 
+        
+            primary += randomString() 
+
+            //TODO: System/code to construct hexa-code for secondary (six allowed characters):
+            
+            secondary += randomString() 
+
+            //TODO: System/code to construct hexa-code for third (six allowed characters): 
+
+            third += randomString()
+
+            //TODO: Set the random colors as background color in their respective HTML elements: 
+    
+            document.getElementById("primary-color").style.backgroundColor = primary 
+            document.getElementById("secondary-color").style.backgroundColor = secondary 
+            document.getElementById("third-color").style.backgroundColor = third
+
+            //TODO: Print the color values to the respective code-containers: 
+            document.getElementById("primary-color-code").innerHTML = primary  
+            document.getElementById("secondary-color-code").innerHTML = secondary 
+            document.getElementById("third-color-code").innerHTML = third 
+
+
+            //console.log(primary, secondary, third)
+        }
+
+        //TODO: Make the function run on button click
+    </script>
+</body>
+</html>
