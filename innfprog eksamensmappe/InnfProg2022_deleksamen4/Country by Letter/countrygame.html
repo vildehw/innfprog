@@ -23,7 +23,7 @@
             </div>
             <div id="startgame">
                 <p id="startmessage"></p>
-                <button id="startbutton">New game</button>
+                <button id="startbutton" onclick="newGame()">New game</button>
             </div>
         </div>
         <div id="userGuessed">
@@ -52,13 +52,14 @@
         const inputfield = document.getElementById("userguess")
         inputfield.focus()
         //Prepare countdown variable:
-        let counter
+        let counter = 0
         //Selectable letters:
         const firstLetters = "ABCEFGILMNPST"
         //User-guessed correct countries:
         let userCorrectGuesses = []
         //Map array with countryList elements lowercase for easier control against user input:
-        const countries_lower
+        const countries_lower = countryList.map( country => {return country.toLowerCase()}) 
+        
         //Prepare array to contain countries filtered by firstletter
         let countries = []
         //Prepare interval id
@@ -68,15 +69,20 @@
         function newGame() {
             //SETS/RESETS:
             //TODO: Set/Reset counter
-            
+            counter = 15
             //TODO: Reset user guessed array
+            userCorrectGuesses.length = 0 
+            countries.length = 0
             
-
             /* TODO: 
              * INTERFACE UPDATES
              * Reset display list of guessed countries, game message, results and countdown timer
              * Hide startbutton and show the inputfield, set inputfield focus
-             */
+             */  
+             document.getElementById("countdown").innerHTML = counter 
+             document.getElementById("startgame").style.display = "none";   
+             document.getElementById("userInputArea").style.display = "block"; 
+             document.getElementById("userguess").focus()
             
             
             /* TODO:
@@ -84,21 +90,60 @@
              * Select random letter for the game, and print the letter to interface (#chosenLetter)
              * Create array of countries filtered on the random selected letter
              * Print total countries to info and result display in interface
-             * Start the timer
-             */
+             * Start the timer 
+             */ 
+            let firstLetterArray = firstLetters.split("")  
+
+            function randomMinMax(min, max) { 
+                return Math.floor(Math.random() * (max - min + 1) + min)
+            }   
+            //funksjon for randomisering er hentet fra https://lms.webtricks.blog/kurs/innforing-i-programmering/10-canvas-animasjon/randomisering-tilfeldig-utvalg-verdi 
+            const randomIndex = randomMinMax(0, firstLetterArray.length - 1) 
+            let randomArrayLetter = firstLetterArray[randomIndex]  
+        
+            document.getElementById("chosenLetter").innerHTML = randomArrayLetter
+
+             
+            countryList.map( country => {
+                country.startsWith(randomArrayLetter) ? countries.push(country) : null
+            })
+            const numberOfCountries = countries.length
+            
+            console.log("countries " + countries) 
+            console.log(numberOfCountries)  
+            
+
+            document.getElementById("countryAmount").innerHTML = numberOfCountries 
+            document.getElementById("total").innerHTML = numberOfCountries 
+            
+            countdown()
             
         }
 
-        
+         
 
         //Function for country-control when Enter is clicked
-        function checkCountry() {
+        function checkCountry() { 
+
             /* TODO:
              * Fetch the guessed country, make sure to have correct capialization
              * If it is a country in the list, and not already guessed, 
              * insert into guessed countries and add to list of guessed countries in interface
              * Update input field to be ready for new user guess
-             */
+             */  
+            
+            const list = document.getElementById("userCorrectList")
+            let val = inputfield.value  
+            if(countries_lower.includes(val) && !userCorrectGuesses.includes(val)) { 
+                userCorrectGuesses.push(val) 
+                list.innerHTML += `<li>${val}</li>` 
+                console.log(userCorrectGuesses) 
+                document.getElementById("correct").innerHTML = userCorrectGuesses.length  
+
+                inputfield.value = ""
+            } 
+            
+            return userCorrectGuesses
         }
 
         //Function for printing the result:
@@ -106,28 +151,75 @@
             /* TODO: 
              * Update interface with results.
              * Check if all countries are found. If so, replace input with message and stop countdown
-             * */
+             * */ 
+
+             if (userCorrectGuesses.length === countries.length) { 
+                document.getElementById("startgame").style.display = "none";
+                document.getElementById("userInputArea").style.display = "block"; 
+                document.getElementById("startmessage").innerHTML = `Congratulations, you guessed all the countries!`
+             }
             
         }
 
-        //TODO: listen for Enter-key key-press. When found, check input-country.
+        //TODO: listen for Enter-key key-press. When found, check input-country. 
+        document.addEventListener("keypress", function (event){
+        if (event.key === "Enter") { 
+            checkCountry() 
+            
+            } 
+        })
+        
+        colorDiv = document.getElementById("countdown") 
+        borderColorDiv = document.getElementById("countdown")
+        //Countdown functionality 
+
         
 
-        //Countdown functionality
         function countdown() {
             /* TODO:
              * Reduce counter by one (each second)
              * Update interface display
              * Update interface colors at 45 and 20 seconds left
              * Stop timer when counter reaches zero, and set gameover()
-             */
+             */   
+
             
+            
+
+            const timer = setInterval(div, 1000)
+            
+            function div(){
+ 
+            counter-- 
+            
+            if(counter <= 45){
+                colorDiv.style.color = "orange" 
+                colorDiv.style.borderColor = "orange"  
+            } 
+
+            if(counter <= 20){
+                colorDiv.style.color = "red"  
+                colorDiv.style.borderColor = "red" 
+            }
+            if(counter <= 0) {
+                clearInterval(timer)
+                gameover() 
+            }   
+            document.getElementById("countdown").innerHTML = counter 
         }
+              
+           
+            
+        }  
+        
+
+          
         
 
         //Game Over functionality
         function gameover() {
-            console.log("Game over")
+            console.log("Game over") 
+            
             //Hide results and input, show startbutton with message including result and try-again-text
             document.getElementById("userInputArea").style.display = "none"
             document.getElementById("startgame").style.display = "block"

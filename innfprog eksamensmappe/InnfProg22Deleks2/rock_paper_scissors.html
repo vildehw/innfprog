@@ -230,8 +230,9 @@
             // Ok, now we have to check for rules! Paper beats rock, rock beat scissors, scissors beat paper.
             // This means if players sign beat computer sign, player wins. Lets try:  ¨¨
 
-            //oppgave 8 
+            
 
+            //oppgave 8
                  if(playerSign === computerSign) {
                  winner = "undecided"
                 } else if(playerSign === "scissors" && computerSign === "paper") {
@@ -288,22 +289,20 @@
             const winnerDiv = document.getElementById("winner")
             winnerDiv.style.display = "block"
 
-            // oppgave 7 
-            /* setTimeout(function(winner) {winnerDiv.value = winner}, 2000); */
-            //fikk ikke denne til å fungere
-             
-            //oppgave 5   
-
-            if(winner === "player") { 
-                winnerDiv.innerHTML = "You win"
-            } else if (winner === "computer") {
-                winnerDiv.innerHTML = "You lost" 
-            } else if (winner === "undecided") { 
-                winnerDiv.innerHTML = "It's a tie"
-            } 
-            // If test som bestemmer hvilke string som skal stå i winner elementet i html fila, basert på winner variabelen.
+            //oppgave 7
+            setTimeout(function() {  
+            //oppgave 5    
+            
+                if(winner === "player") { 
+                    winnerDiv.innerHTML = "You win"
+                } else if (winner === "computer") {
+                    winnerDiv.innerHTML = "You lost" 
+                } else if (winner === "undecided") { 
+                    winnerDiv.innerHTML = "It's a tie"
+                }   
+                 // If test som bestemmer hvilke string som skal stå i winner elementet i html fila, basert på winner variabelen.
+             }, 1000);
            
-
             //winnerDiv.innerHTML = "The winner is " + winner  
             //kommenterte ut koden over for at koden i oppg 5 skal kjøres
 
@@ -340,11 +339,11 @@
             } else if(winner === "undecided") { 
                 draws += 1
             }   
-            // If test som bestemmer hvilke tall i html elementet counterbox som skal øke basert på hvem vinneren i spillet er.
+            // If test som bestemmer hvilke tall i html elementet counterbox som skal øke basert på hvem vinneren i spillet er. 
 
             document.getElementById("playerWins").innerHTML = playerWins  
             document.getElementById("computerWins").innerHTML = computerWins 
-            document.getElementById("draws").innerHTML = draws
+            document.getElementById("draws").innerHTML = draws   
 
             //oppgave 4
             if(counter > 0) { 
